@@ -1,0 +1,27 @@
+\frametitle{\texttt{Maths Examples}}
+
+\vfill
+    Inline maths
+\begin{LTXexample}[style=latexsty,pos=l]
+Inline maths is displayed within our text, such as \begin{math} a^3 + 6b \end{math}.
+\end{LTXexample}
+
+\vfill
+    displaymath(without numbering)
+\begin{LTXexample}[style=latexsty,pos=l]
+Display maths is displayed separately from the text.
+\begin{displaymath}
+    a^3 + 6b
+\end{displaymath}
+\end{LTXexample}
+
+\vfill
+    equation(with numbering)
+\begin{LTXexample}[style=latexsty,pos=l]
+Equation - separate, with numbering.
+\begin{equation}
+    a^3 + 6b
+\end{equation}
+\end{LTXexample}
+\vfill
+

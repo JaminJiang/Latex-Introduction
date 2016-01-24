@@ -1,0 +1,500 @@
+\documentclass[mathserif]{beamer}
+
+\usepackage{listings}
+\usepackage{showexpl}
+\usepackage{setspace}
+\usepackage{multirow}
+\usepackage{dtklogos}
+\usepackage[T1]{fontenc}
+
+%To use handoutwithnotes: uncomments below
+%\usepackage{handoutwithnotes}
+%\pgfpagesuselayout{3 on 1 with notes}[a4paper,border shrink=5mm]
+%\pgfpageslogicalpageoptions{1}{border code=\pgfusepath{stroke}}
+%\pgfpageslogicalpageoptions{2}{border code=\pgfusepath{stroke}}
+%\pgfpageslogicalpageoptions{3}{border code=\pgfusepath{stroke}}
+
+\lstdefinestyle{latexsty}{
+	language={[LaTeX]TeX},
+    basicstyle=\small\ttfamily,
+    breaklines=true,
+    breakindent=0pt,
+    backgroundcolor=\color{lightgray},
+    numbers=none, numberstyle=\tiny, stepnumber=1, numbersep=5pt,
+    commentstyle=\color{red},
+    showstringspaces=false,
+    keywordstyle=\color{blue}\bfseries,
+    morekeywords={align,begin},
+    tabsize=2,
+    pos=b
+}
+
+\usetheme{default}
+\useoutertheme{infolines}
+\usecolortheme[RGB={166,5,20}]{structure}
+%\setbeamertemplate{items}[circle]
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\setbeamertemplate{navigation symbols}{}
+
+
+\title{Introduction to \LaTeX}
+\subtitle{A Method for Scientific Writing}
+\author[Jiang Jiaming]{Jiang Jiaming, Group 2}
+\institute[SKLSE]{State Key Laboratory of Software Engineering, Wuhan University}
+\date[20/03/15]{March 20th, 2015}
+
+
+\begin{document}
+
+%--------------- slide -------------------
+\begin{frame}[plain]
+	\titlepage
+\end{frame}
+	
+
+%--------------- slide -------------------
+\begin{frame}{Introduction}
+
+\vfill
+\begin{itemize}
+	\item What, Why, Where and How of \LaTeX
+	\item Writing \LaTeX\ (Basics)
+        \begin{itemize}
+        	\item Space, Reserved Characters
+        	\item Commands
+        	\item Comments
+        \end{itemize}
+	\item Document Structure
+	\item Elements
+        \begin{itemize}
+        	\item Text Formatting
+        	\item Tables and Lists
+        	\item Graphics, Images \& Figures in \LaTeX
+        	\item Maths
+        \end{itemize}
+\end{itemize}
+\vfill
+\end{frame}
+
+%--------------- slide -------------------
+\begin{frame}{Common Problems in Typesetting Documents with Word}
+
+\begin{itemize}
+	\item Poor typographic control.
+	\item "Badness" is difficult to resolve.
+	\item Image embedding (instead of external links) and limited image editing
+options.
+	\item Unexpected surprises when using external text.
+	\item Unprofessional look.
+\end{itemize}
+
+\end{frame}
+
+
+%--------------- slide -------------------
+\begin{frame}{What is~\LaTeX?}
+
+\TeX\ is software developed by Donald Knuth for typesetting documents.
+
+\begin{itemize}
+	\item low level markup language and compiler
+	\item very powerful, but difficult to use
+\end{itemize}
+\vfill
+
+\LaTeX\ is a collection of software built around~\TeX\ to make life easier
+\begin{itemize}
+	\item macros and scripts to convert~\LaTeX\ commands to~\TeX
+	\item many packages for doing complex formatting/layouts
+\end{itemize}
+\vfill
+\begin{center}
+    \includegraphics[scale=0.22]{img/DonaldKnuth}
+\end{center}
+\end{frame}
+
+
+%--------------- slide -------------------
+\begin{frame}{Why~\LaTeX?}
+
+\begin{itemize}
+	\item Allows you to concentrate on content and structure, rather than layout and presentation
+	\item Keeps formatting consistent throughout the document
+	\item No design or typography knowledge required
+	\item Excellent for writing mathematical expressions or equations
+	\item Long and complex documents can be created easily
+	\item Free!
+\end{itemize}
+
+\end{frame}
+
+%--------------- slide -------------------
+\begin{frame}{Why~\LaTeX?}
+
+... It looks great.
+
+\begin{center}
+    \includegraphics[scale=0.32]{img/Latex_beautiful}
+\end{center}
+
+\end{frame}
+
+%--------------- slide -------------------
+\begin{frame}{Why not~\LaTeX?}
+
+\begin{itemize}
+	\item Can't easily see how document looks as we write it
+	\item Need to learn \LaTeX\ before you can create anything
+	\item Lose some control over formatting and layout
+	\item \LaTeX\ is not the prettiest or simplest language out there
+\end{itemize}
+
+\end{frame}
+
+
+%--------------- slide -------------------
+\begin{frame}{Where do we get~\LaTeX?}
+
+\LaTeX\ is freely available from a number of different sources. There are many different implementations and collections of packages online.
+
+\begin{description}
+	\item[Windows] \textbf{proTeXt} is a good solution for Windows, providing \textbf{MiKteX}.
+	\item[Mac OSX] \textbf{MacTeX} provides \textbf{TeXLive}.
+	\item[Linux] Most distributions will come with~\LaTeX\ ready installed but if not you can install \textbf{TeXLive}.
+\end{description}
+\vfill
+Some websites like \textbf{Overleaf} provide online platforms for ''Real-time Collaborative Writing and Publishing''.
+~\\
+\textbf{CTeX} (Chinese TeX) is a nice choice for Chinese users.
+\end{frame}
+
+
+
+%--------------- slide -------------------
+\begin{frame}{How do we use~\LaTeX?}
+
+Creating documents with~\LaTeX\ is simple:
+\vfill
+\begin{enumerate}
+	\item Write our document as plain text in a `\texttt{.tex}' file, using~\LaTeX\ commands to structure and format it 	\item Compile our `\texttt{.tex}' file to produce the output
+\end{enumerate}
+\vfill
+    \begin{center}
+		\includegraphics[height=0.45\textwidth]{img/HowLatex}
+	\end{center}
+\vfill
+\end{frame}
+
+
+%--------------- slide -------------------
+\begin{frame}[fragile]
+\frametitle{First (basic)~\LaTeX\ Example}
+	\begin{LTXexample}[style=latexsty]
+		\documentclass{article}
+		\begin{document}
+		    Hello World!
+		\end{document}
+	\end{LTXexample}
+	
+\end{frame}
+	
+	
+
+%--------------- slide -------------------
+\begin{frame}[fragile]
+\frametitle{Writing \LaTeX\ (Basics) -- Space, Reserved Characters}
+
+\vfill
+	Whitespace (spaces or tabs) are all seen as a `space' by~\LaTeX. Several concurrent spaces are all seen as one space only.
+\vfill
+	\begin{LTXexample}[style=latexsty,pos=l]
+		If I add     multiple     spaces     between     words    \LaTeX\    will treat them as   one    space.
+	\end{LTXexample}
+\vfill
+\LaTeX\ uses a number of characters that have a special meaning as part of the language.
+
+\vfill
+	\begin{LTXexample}[style=latexsty,pos=l]
+		\# \$  \^{} \& \_ \{ \} \~{} \textbackslash{} \%
+	\end{LTXexample}
+\vfill
+
+\end{frame}
+
+
+%--------------- slide -------------------
+\begin{frame}[fragile]
+\frametitle{Writing \LaTeX\ (Basics) -- Commands, Comments}
+
+\LaTeX\ commands have an effect on the text in the document. Some commands have additional arguments or optional parameters. The general syntax for a~\LaTeX\ command is:
+
+\begin{lstlisting}[style=latexsty]
+\commandname[opt1, opt2, ...]\{arg1\}\{arg2\}...}
+\end{lstlisting}
+\vfill
+
+\vfill
+~\\
+The `\texttt{\%}' character is used to create comments in~\LaTeX. When~\LaTeX\ is processing your \texttt{.tex} file and it comes across a `\texttt{\%}', it ignores the rest of the line.
+
+	\begin{LTXexample}[style=latexsty]
+		%This is a comment and will not be shown.
+		Here is some text in our file that will be shown. %but the rest of the line will not be.
+	\end{LTXexample}
+\end{frame}
+
+
+%--------------- slide -------------------
+\begin{frame}[fragile]
+\frametitle{Document Structure}
+
+Every~\LaTeX\ document must have a certain structure:
+\vfill
+\begin{lstlisting}[style=latexsty]
+\documentclass{...}
+\usepackage{...}
+\begin{document}
+...
+\end{document}
+\end{lstlisting}
+\vfill
+
+The \texttt{{\textbackslash{documentclass\{\ldots\}}}} command tells~\LaTeX\ which type of document we are creating, and how it should be set up and formatted.
+\vfill
+Often,the default set of commands available to~\LaTeX\ cannot solve all of our problems alone. You will need \texttt{{\textbackslash{usepackage\{\ldots\}}}} command to include extra packages.
+\vfill
+Documents can be divided into different parts, chapters or sections.
+\end{frame}
+
+
+%--------------- slide -------------------
+\begin{frame}{fragile}
+\frametitle{Document Structure Example}
+
+\vfill
+\LaTeX\ Template for \texttt{IEEEtran} Journals
+
+\vfill
+    \begin{center}
+		\includegraphics[height=0.5\textwidth]{img/WholeExample}
+	\end{center}
+\vfill
+
+\end{frame}
+
+%--------------- slide -------------------
+\begin{frame}[fragile]
+\frametitle{Elements -- Text Formatting}
+\vfill
+\LaTeX\ has many text formatting options included by default that allow you to change text size, style and spacing.
+\vfill
+	\begin{LTXexample}[style=latexsty,pos=l]
+		{\Large This text is large} \\
+{\tiny This text is tiny}
+	\end{LTXexample}
+
+\vfill
+	\begin{LTXexample}[style=latexsty,pos=l]
+		\textsf{Sans Serif font} \\
+\texttt{Teletype font} \\
+\textit{Italic} \\
+\textsc{Small Capitals} \\
+\textbf{Bold} \\
+\textrm{Roman font}
+	\end{LTXexample}
+
+\vfill
+	\begin{LTXexample}[style=latexsty,pos=l]
+		We can \emph{emphasise} a word in the sentence.
+	\end{LTXexample}
+\vfill
+\end{frame}
+
+
+%--------------- slide -------------------
+\begin{frame}
+\frametitle{Elements -- Lists}
+\vfill
+\LaTeX\ provides three different environments for defining lists:
+\vfill
+	\begin{description}
+		\item[\texttt{itemize}] For basic bulleted lists
+		\item[\texttt{enumerate}] For numbered lists
+		\item[\texttt{description}] For lists with a label for each item
+	\end{description}
+\vfill
+\end{frame}
+
+%--------------- slide -------------------
+\begin{frame}[fragile]
+\frametitle{\texttt{itemize, enumerate, description}}
+
+
+\vfill
+	\begin{LTXexample}[style=latexsty,pos=l]
+		\begin{itemize}
+		    \item the first item
+		    \item the second item
+		    \item the third item
+		\end{itemize}
+	\end{LTXexample}
+
+\vfill
+	\begin{LTXexample}[style=latexsty,pos=l]
+		\begin{enumerate}
+		    \item the first item
+		    \item the second item
+		    \item the third item
+		\end{enumerate}
+	\end{LTXexample}
+
+\vfill
+	\begin{LTXexample}[style=latexsty,pos=l]
+		\begin{description}
+		    \item[First] the first item
+		    \item[Second] the second item
+		    \item[Third] the third item
+		\end{description}
+	\end{LTXexample}
+\vfill
+
+\end{frame}
+
+%--------------- slide -------------------
+\begin{frame}[fragile]
+\frametitle{Elements -- Tables}
+\vfill
+The \texttt{tabular} environment allows us to create tables within our \LaTeX\ documents.
+\vfill
+\emph{Table} Example:
+\vfill
+	\begin{LTXexample}[style=latexsty]
+		\begin{tabular}{ | l || c || r | }
+		    \hline
+		    some text & some text & this text \\
+		    a text & other text & more text \\
+		    another text & some text & some other text \\
+		    \hline
+		\end{tabular}
+	\end{LTXexample}
+\vfill
+\end{frame}
+
+%--------------- slide -------------------
+\begin{frame}[fragile]
+\frametitle{Elements -- Graphics, Images \& Figures in \LaTeX}
+\vfill
+Including graphics in our \LaTeX\ document is relatively simple.
+\vfill
+\begin{itemize}
+	\item Insertion
+\end{itemize}
+The \texttt{{\textbackslash}includegraphics} command is used to insert an image file into your \LaTeX\ document.
+\vfill
+\begin{lstlisting}[style=latexsty]
+	\includegraphics[opt1=val1, ..., ]{imagefile}
+\end{lstlisting}
+\vfill
+\begin{itemize}
+	\item Options
+\end{itemize}
+\begin{tabular}{r | l}
+	\texttt{width=xx} & Specify the preferred width of the image \\
+  	\texttt{height=xx} & Specify the preferred height of the image \\
+    \texttt{scale=xx} & Scale the image by the given factor \\
+    \texttt{angle=xx} & Rotate the image by the given number of degrees \\
+	\texttt{page=x} & Select a particular page from a \texttt{.pdf} file\\
+\end{tabular}
+\vfill
+\end{frame}
+
+%--------------- slide -------------------
+\begin{frame}[fragile]
+\frametitle{\texttt{{\textbackslash}includegraphics} -- example}
+\vfill
+	\begin{LTXexample}[style=latexsty]
+		\begin{center}
+            \setlength\fboxrule{2pt}
+            \fbox{\includegraphics[width=0.3\textwidth, angle=5]{img/background}}
+		\end{center}
+	\end{LTXexample}
+\vfill
+\end{frame}
+
+
+%--------------- slide -------------------
+\begin{frame}{Elements -- Maths}
+
+\vfill
+Typesetting maths is one of the major strengths of \LaTeX, and one of the main reasons for its popularity within the scientific community.
+~\\~\\
+The \texttt{amsmath} package is frequently used to add to the built in maths typesetting capabilities of \LaTeX -- all the discussion here will assume it has been used.
+\vfill
+
+\vfill
+\emph{Besides}, there are many more packages that can be useful for this type of scientific work. Just some are: \texttt{IEEEtrantools}, \texttt{mathtools}, \texttt{mchem}.
+\vfill
+
+\end{frame}
+
+%--------------- slide -------------------
+\begin{frame}[fragile]
+\frametitle{\texttt{Maths Examples}}
+
+\vfill
+    Inline maths
+	\begin{LTXexample}[style=latexsty,pos=l]
+		Inline maths is displayed within our text, such as \begin{math} a^3 + 6b \end{math}.
+	\end{LTXexample}
+
+\vfill
+    displaymath(without numbering)
+	\begin{LTXexample}[style=latexsty,pos=l]
+		Display maths is displayed separately from the text.
+		\begin{displaymath}
+		    a^3 + 6b
+		\end{displaymath}
+	\end{LTXexample}
+
+\vfill
+    equation(with numbering)
+	\begin{LTXexample}[style=latexsty,pos=l]
+		Equation - separate, with numbering.
+		\begin{equation}
+		    a^3 + 6b
+		\end{equation}
+	\end{LTXexample}
+\vfill
+
+\end{frame}
+
+%--------------- slide -------------------
+\begin{frame}{fragile}
+\frametitle{Special Documents}
+
+\vfill
+\begin{itemize}
+	\item Presentation
+	\item Poster
+	\item CV and cover letter
+	\item Teaching stuff
+	\begin{center}
+		\includegraphics[height=0.5\textwidth]{img/cv_template}
+        \includegraphics[height=0.5\textwidth]{img/poster}
+	\end{center}
+\end{itemize}
+\vfill
+\end{frame}
+
+%--------------- slide -------------------
+\begin{frame}{fragile}
+\frametitle{Questions?}
+
+\vfill
+    \begin{center}
+		\includegraphics[height=0.5\textwidth]{img/QA}
+	\end{center}
+\vfill
+\end{frame}
+
+\end{document}
